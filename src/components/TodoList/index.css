@@ -1,0 +1,54 @@
+.container {
+    width: 95%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .todos {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 15px;
+    background-color: rgb(50, 195, 205);
+  }
+  
+  .dragactive {
+    background-color: rgb(0, 221, 236);
+  }
+  
+  .dragcomplete {
+    background-color: rgb(255, 38, 0);
+  }
+  
+  .remove {
+    background-color: rgb(235, 103, 80);
+  }
+  
+  .todos__heading {
+    font-size: 30px;
+    /* text-align: center; */
+    color: white;
+  }
+
+  @media (max-width: 1100px) {
+    .todos {
+      width: 43%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .input {
+      width: 95%;
+    }
+    .container {
+      width: 95%;
+      flex-direction: column;
+    }
+    .todos {
+      width: 90%;
+      margin-bottom: 10px;
+    }
+  }
