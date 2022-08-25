@@ -10,7 +10,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 45%;
     padding: 15px;
     background-color: rgb(50, 195, 205);
   }
@@ -45,6 +45,7 @@
     }
     .container {
       width: 95%;
+      align-items: center;
       flex-direction: column;
     }
     .todos {
