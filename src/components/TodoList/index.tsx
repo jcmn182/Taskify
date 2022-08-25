@@ -3,7 +3,9 @@ import  './index.css'
 // models
 import { Todo } from "../../utils/models/modelsTodo";
 //components
-import {SingleTodo} from "..";
+import {SingleTodo} from "../../components";
+//tools
+import { Droppable } from "react-beautiful-dnd";
 
 interface props {
   todos: Array<Todo>;
@@ -20,7 +22,13 @@ const TodoList: React.FC<props> = ({
 }) => {
   return (
     <div className="container">
-          <div className="todos">
+      <Droppable droppableId="TodosList">
+      {(provided, snapshot) => (
+          <div
+          className={`todos ${snapshot.isDraggingOver ? "dragactive" : ""}`}
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+          >
             <span className="todos__heading">Active Tasks</span>
             {todos?.map((todo, index) => (
               <SingleTodo
@@ -31,9 +39,18 @@ const TodoList: React.FC<props> = ({
                 setTodos={setTodos}
               />
             ))}
+          {provided.placeholder}
           </div>
+      )}
+      </Droppable>
+      <Droppable droppableId="TodosRemove">
+          {(provided, snapshot) => (
           <div
-            className="todos"
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+          className={`todos  ${
+            snapshot.isDraggingOver ? "dragcomplete" : "remove"
+          }`}
           >
             <span className="todos__heading">Completed Tasks</span>
             {CompletedTodos?.map((todo, index) => (
@@ -45,7 +62,9 @@ const TodoList: React.FC<props> = ({
                 setTodos={setCompletedTodos}
               />
             ))}
-          </div>
+             {provided.placeholder}
+          </div>)}
+      </Droppable>
     </div>
   );
 };
